@@ -38,12 +38,12 @@ public class ConceptualFilterReduce2 extends Reducer<IntWritable, Text, Text, Te
 				String docname2 = alldocs.get(j);
 				List<String> fingerprint1 = fingerprintmap.get(docname1);
 				List<String> fingerprint2 = fingerprintmap.get(docname2);
-				int partialdotproduct = 0, partsquaredsum1 = 0, partsquaredsum2 = 0;
+				float partialdotproduct = 0, partsquaredsum1 = 0, partsquaredsum2 = 0;
 				
 				for(int k=0; k<fingerprint1.size(); k++)
 				{
-					int val1 = Integer.parseInt(fingerprint1.get(k));
-					int val2 = Integer.parseInt(fingerprint2.get(k));
+					float val1 = Float.parseFloat(fingerprint1.get(k));
+					float val2 = Float.parseFloat(fingerprint2.get(k));
 					
 					partsquaredsum1 += (val1*val1);
 					partsquaredsum2 += (val2*val2);

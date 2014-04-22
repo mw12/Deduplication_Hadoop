@@ -12,11 +12,9 @@ import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Reducer.Context;
 
 import com.cedarsoftware.util.io.JsonReader;
 
@@ -79,7 +77,7 @@ public class ConceptualFilterMap1 extends Mapper<LongWritable, Text, Text, Text>
 		
 		int row = Integer.parseInt(record.substring(0, startdollar).trim());
 		int column = Integer.parseInt(record.substring(startdollar+3, starthash).trim());
-		int value = Integer.parseInt(record.substring(starthash+3).trim());
+		float value = Float.parseFloat(record.substring(starthash+3).trim());
 		
 		System.out.println("adfafadf" + row + " " + column + " " + value +  " " + docmap.get(column));
 		

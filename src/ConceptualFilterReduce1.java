@@ -11,20 +11,21 @@ public class ConceptualFilterReduce1 extends Reducer<Text, Text, Text, Text>
 	{
 		
 		String fingerprint = "", recordstring;
-		int startdollar, row, value;
+		int startdollar, row;
+		float value;
 		boolean firsttime = true;
-		TreeMap<Integer, Integer> fingermap = new TreeMap<Integer, Integer>();
+		TreeMap<Integer, Float> fingermap = new TreeMap<Integer, Float>();
 		
 		for(Text record: records)
 		{
 			recordstring = record.toString();
 			startdollar = recordstring.indexOf("$$$");
 			row = Integer.parseInt(recordstring.substring(0, startdollar).trim());
-			value = Integer.parseInt(recordstring.substring(startdollar+3).trim());
+			value = Float.parseFloat(recordstring.substring(startdollar+3).trim());
 			fingermap.put(row, value);
 		}
 		
-		for(Entry<Integer, Integer> i: fingermap.entrySet())
+		for(Entry<Integer, Float> i: fingermap.entrySet())
 		{
 				if(firsttime)
 				{

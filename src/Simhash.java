@@ -1,5 +1,6 @@
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.jobcontrol.JobControl;
@@ -181,8 +182,12 @@ public class Simhash implements Tool
 		matrixmultiplication1.setMapperClass(MatrixMultiplicationMap1.class);
 		matrixmultiplication1.setReducerClass(MatrixMultiplicationReduce1.class);
 		
-		matrixmultiplication1.setOutputKeyClass(IntWritable.class);
-		matrixmultiplication1.setOutputValueClass(Text.class);
+		matrixmultiplication1.setOutputKeyClass(Text.class);
+		matrixmultiplication1.setOutputValueClass(Float.class);
+		
+		matrixmultiplication1.setMapOutputKeyClass(IntWritable.class);
+		matrixmultiplication1.setMapOutputValueClass(Text.class);
+		
 		
 		FileInputFormat.addInputPath(matrixmultiplication1, new Path(args[10]));
 	    FileOutputFormat.setOutputPath(matrixmultiplication1, new Path(args[11]));
@@ -194,7 +199,7 @@ public class Simhash implements Tool
 		matrixmultiplication2.setReducerClass(MatrixMultiplicationReduce2.class);
 		
 		matrixmultiplication2.setOutputKeyClass(Text.class);
-		matrixmultiplication2.setOutputValueClass(IntWritable.class);
+		matrixmultiplication2.setOutputValueClass(FloatWritable.class);
 		
 		FileInputFormat.addInputPath(matrixmultiplication2, new Path(args[11]));
 	    FileOutputFormat.setOutputPath(matrixmultiplication2, new Path(args[12]));
@@ -293,6 +298,9 @@ public class Simhash implements Tool
 	        	Matrix U = svd.getU();
 	        	Matrix S = svd.getS();
 	        	Matrix V = svd.getV();
+	        	
+	        	System.out.println("S IS : " + S);
+	        	System.out.println("V IS : " + V);
 	        	
 	        	Matrix Vtranspose = V.transpose();
 	        	int columnsS = S.columnSize(); //dont know exactly which matrices to multiply

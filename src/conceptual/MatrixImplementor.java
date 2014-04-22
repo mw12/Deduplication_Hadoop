@@ -46,11 +46,11 @@ public class MatrixImplementor {
 				{
 					if(column+1==columns)
 					{
-						writer.write(String.valueOf((int)(m.get(row, column))));//);
+						writer.write(String.valueOf((float)(m.get(row, column))));//);
 					}
 					else
 					{
-						writer.write(String.valueOf((int)(m.get(row, column))) + ",");//);
+						writer.write(String.valueOf((float)(m.get(row, column))) + ",");//);
 					}
 					
 					//System.out.println;

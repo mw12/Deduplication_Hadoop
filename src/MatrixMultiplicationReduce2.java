@@ -1,17 +1,17 @@
 import java.io.IOException;
 
-import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class MatrixMultiplicationReduce2 extends Reducer<Text, IntWritable, Text, IntWritable>
+public class MatrixMultiplicationReduce2 extends Reducer<Text, FloatWritable, Text, FloatWritable>
 {	
-	public void reduce(Text indices,Iterable<IntWritable> products,Context context) throws IOException, InterruptedException
+	public void reduce(Text indices,Iterable<FloatWritable> products,Context context) throws IOException, InterruptedException
 	{
-		int sum = 0;
-		for(IntWritable tempprod: products)
+		float sum = 0;
+		for(FloatWritable tempprod: products)
 			sum+=tempprod.get();
 		
-		context.write(new Text(indices + " ### "), new IntWritable(sum));
+		context.write(new Text(indices + " ### "), new FloatWritable(sum));
 	}
 }

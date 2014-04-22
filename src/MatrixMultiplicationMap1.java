@@ -23,7 +23,7 @@ public class MatrixMultiplicationMap1 extends Mapper<LongWritable, Text, IntWrit
 		
 		while(st.hasMoreTokens())
 		{
-			int element = Integer.parseInt(st.nextToken());
+			float element = Float.parseFloat(st.nextToken());
 			if(filename.equalsIgnoreCase("matrix1"))
 			{
 				context.write(new IntWritable(column), new Text(rowMat1+" $$$ "+element+" ### "+"matrix1"));

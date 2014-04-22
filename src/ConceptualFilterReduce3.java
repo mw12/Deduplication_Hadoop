@@ -19,7 +19,8 @@ public class ConceptualFilterReduce3 extends Reducer<Text, Text, Text, Text>
 		String docname1 = docpairstring.substring(0, startdollar).trim();
 		String docname2 = docpairstring.substring(startdollar+3).trim();
 		
-		int startat, startpercent, dotproduct = 0, squaredsumdoc1 = 0, squaredsumdoc2 = 0;
+		int startat, startpercent;
+		float dotproduct = 0, squaredsumdoc1 = 0, squaredsumdoc2 = 0;
 		
 		for(Text record: records)
 		{
@@ -27,9 +28,9 @@ public class ConceptualFilterReduce3 extends Reducer<Text, Text, Text, Text>
 			startat = recordstring.indexOf("@@@");
 			startpercent = recordstring.indexOf("%%%");
 			
-			dotproduct += Integer.parseInt(recordstring.substring(0, startat).trim());
-			squaredsumdoc1 += Integer.parseInt(recordstring.substring(startat+3, startpercent).trim());
-			squaredsumdoc2 += Integer.parseInt(recordstring.substring(startpercent+3).trim());	
+			dotproduct += Float.parseFloat(recordstring.substring(0, startat).trim());
+			squaredsumdoc1 += Float.parseFloat(recordstring.substring(startat+3, startpercent).trim());
+			squaredsumdoc2 += Float.parseFloat(recordstring.substring(startpercent+3).trim());	
 		}
 		
 		double moddoc1 = Math.sqrt(squaredsumdoc1);
