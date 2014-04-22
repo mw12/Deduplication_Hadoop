@@ -44,7 +44,7 @@ public class deduplicationreducer extends Reducer<IntWritable, Text, Text, Text>
 			String docid2 = current.substring(delimitter+3,current.length()).trim();
 			
 			int similarbits = hammingdistance(fingerprint1, fingerprint2);
-			if(similarbits > 45)
+			if(similarbits > 55)
 			{
 				if(!uniquedocs.contains(docid1) && !duplicatedocs.contains(docid1))
 				{

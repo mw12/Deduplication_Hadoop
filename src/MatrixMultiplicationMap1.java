@@ -27,12 +27,12 @@ public class MatrixMultiplicationMap1 extends Mapper<LongWritable, Text, IntWrit
 			if(filename.equalsIgnoreCase("matrix1"))
 			{
 				context.write(new IntWritable(column), new Text(rowMat1+" $$$ "+element+" ### "+"matrix1"));
-				System.out.println(column+" " +rowMat1+" "+rowMat2+" "+element);
+				//System.out.println(column+" " +rowMat1+" "+rowMat2+" "+element);
 			}
 			else
 			{
 				context.write(new IntWritable(rowMat2), new Text(column+" $$$ "+element+ " ### " + "matrix2"));
-				System.out.println(column+" " +rowMat1+" "+rowMat2+" "+element);
+				//System.out.println(column+" " +rowMat1+" "+rowMat2+" "+element);
 			}
 			
 			column++;

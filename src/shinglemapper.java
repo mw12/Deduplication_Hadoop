@@ -21,29 +21,6 @@ public class shinglemapper extends Mapper<LongWritable, Text, Text, IntWritable>
 			  String t1 = stringTokenizer.nextToken() + " $$$ " + filename;
 			  context.write(new Text(t1), new IntWritable(index));
 			  index++;
-		  }
-//		while(true)
-//		{
-//			ArrayList<Text> tuple = new ArrayList<Text>();
-//			  if(stringTokenizer.hasMoreTokens())
-//			  {
-//				  String t1 = stringTokenizer.nextToken();
-//				  String t2, result;
-//				  if(stringTokenizer.hasMoreTokens())
-//				  {
-//					  t2 = stringTokenizer.nextToken();
-//					  result = t1 + " " + t2 + "$" + filename;
-//					  context.write(new Text(result), new IntWritable(1));
-//				  }
-//				  else
-//				  {
-//					  result = t1 + "$" + filename;
-//					  context.write(new Text(result), new IntWritable(1));
-//				  }				  
-//			  }
-//			  else
-//				  break;
-//		}
-		
+		  }		
 	}
 }

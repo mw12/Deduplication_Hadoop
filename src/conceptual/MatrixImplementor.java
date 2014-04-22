@@ -39,7 +39,7 @@ public class MatrixImplementor {
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fis));
 		int rows = m.rowSize();
 		int columns = m.columnSize();
-		System.out.println("rows are " + rows);
+		//System.out.println("rows are " + rows);
 		for(int row=0; row<rows; row++)
 		{
 			for(int column=0; column<columns; column++)
@@ -138,7 +138,7 @@ public class MatrixImplementor {
     	int uniquewords = getwords(path, conf);
     	
     	DenseMatrix dm = new DenseMatrix(uniquewords, totaldocs);
-    	System.out.println("unique words " + uniquewords + "  " + " total docs " + totaldocs);
+    	//System.out.println("unique words " + uniquewords + "  " + " total docs " + totaldocs);
     	
     	for (FileStatus partFile : partFiles) 
 		{
@@ -189,7 +189,7 @@ public class MatrixImplementor {
 			reader.close();
 			fis.close();
 		}
-    	System.out.print(dm.toString());
+    	//System.out.print(dm.toString());
     	return dm;
 	}
 	public SingularValueDecomposition getsvd(DenseMatrix dm)

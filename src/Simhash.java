@@ -290,7 +290,7 @@ public class Simhash implements Tool
 	    	
 	    	if (control.allFinished())
 		    {
-	    		System.out.println("\n\n\n\n\nExecuting static code...\n\n\n\n");
+	    		//System.out.println("\n\n\n\n\nExecuting static code...\n\n\n\n");
 	    	    MatrixImplementor mi = new MatrixImplementor();
 	        	DenseMatrix tdm = mi.buildmatrix("/home/sahil/tdm3", matrixmultiplication1.getConfiguration());
 	        	SingularValueDecomposition svd = mi.getsvd(tdm);
@@ -299,8 +299,8 @@ public class Simhash implements Tool
 	        	Matrix S = svd.getS();
 	        	Matrix V = svd.getV();
 	        	
-	        	System.out.println("S IS : " + S);
-	        	System.out.println("V IS : " + V);
+	        	//System.out.println("S IS : " + S);
+	        	//System.out.println("V IS : " + V);
 	        	
 	        	Matrix Vtranspose = V.transpose();
 	        	int columnsS = S.columnSize(); //dont know exactly which matrices to multiply
@@ -320,7 +320,7 @@ public class Simhash implements Tool
 	    	    {
 	    	    	if(control.allFinished())
 	    	    		{
-	    	        	System.out.println("now writing this : "+ mi.docmap.toString());
+	    	        	//System.out.println("now writing this : "+ mi.docmap.toString());
 	    	        	
 	    	    		String json = JsonWriter.objectToJson(mi.docmap);
 	    	    		conceptualfilter1.getConfiguration().set("map", json);

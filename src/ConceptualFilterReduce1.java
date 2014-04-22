@@ -36,7 +36,7 @@ public class ConceptualFilterReduce1 extends Reducer<Text, Text, Text, Text>
 					fingerprint += ","+i.getValue();
 		}
 		
-		System.out.println("I(N reducer\n");
+		//System.out.println("I(N reducer\n");
 		context.write(docnametext, new Text(" $$$ " + fingerprint));
 		//context.write(new Text("temp"), new Text("dollarS"));
 		

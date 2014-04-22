@@ -37,10 +37,10 @@ public class ConceptualFilterMap1 extends Mapper<LongWritable, Text, Text, Text>
 		Map<Integer, String> readMap = (HashMap)jsonreader.readObject();
 		docmap = readMap;
 		
-		for(Integer key: readMap.keySet())
+		/*for(Integer key: readMap.keySet())
 		{
 			System.out.println(key + " -> " + readMap.get(key));
-		}
+		}*/
 
 		FileSystem hdfs = FileSystem.get(conf);
     	FileStatus[] partFiles = hdfs.listStatus(new Path("/home/sahil/deduplicationT"));
@@ -63,7 +63,7 @@ public class ConceptualFilterMap1 extends Mapper<LongWritable, Text, Text, Text>
 				simhashuniques.add(docname);
 			}
 			
-			System.out.println("afadf  a  dfad" + simhashuniques);
+			//System.out.println("afadf  a  dfad" + simhashuniques);
 			bufferedreader.close();
 			fis.close();
 		}
@@ -79,7 +79,7 @@ public class ConceptualFilterMap1 extends Mapper<LongWritable, Text, Text, Text>
 		int column = Integer.parseInt(record.substring(startdollar+3, starthash).trim());
 		float value = Float.parseFloat(record.substring(starthash+3).trim());
 		
-		System.out.println("adfafadf" + row + " " + column + " " + value +  " " + docmap.get(column));
+		//System.out.println("adfafadf" + row + " " + column + " " + value +  " " + docmap.get(column));
 		
 		if(simhashuniques.contains(docmap.get(column)))
 		{

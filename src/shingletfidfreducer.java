@@ -13,43 +13,55 @@ import org.apache.hadoop.mapreduce.Reducer;
 public class shingletfidfreducer extends Reducer<Text, Text, Text, Text>
 {
 	
-	private static String convertToHex(byte[] data) 
-	{ 
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < data.length; i++) { 
-            int halfbyte = (data[i] >>> 4) & 0x0F;
-            int two_halfs = 0;
-            do { 
-                if ((0 <= halfbyte) && (halfbyte <= 9)) 
-                    buf.append((char) ('0' + halfbyte));
-                else 
-                    buf.append((char) ('a' + (halfbyte - 10)));
-                halfbyte = data[i] & 0x0F;
-            } while(two_halfs++ < 1);
-        } 
-        String hex64 = buf.toString();
-        StringBuffer binary =  new StringBuffer(); 
-        for (int i = 0; i < hex64.length(); i++) 
-        {        	
-        	int decimal = Integer.parseInt(String.valueOf(hex64.charAt(i)), 16);
-        	binary.append(Integer.toBinaryString(decimal));
-        	if(binary.length()>=64)
-        		return binary.toString().substring(0,64);
-        	
-		}
-        return binary.toString();
-        //return buf.toString();
-    } 
- 
-    public static String SHA1(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException  
+	public static String SHA1(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException  
     { 
 	    MessageDigest md = MessageDigest.getInstance("SHA-1");
 	    byte[] sha1hash = new byte[40];
 	    md.update(text.getBytes("iso-8859-1"), 0, text.length());
 	    sha1hash = md.digest();
-	    return convertToHex(sha1hash);
+	
+	    
+	   	return hexToBinary(byteArrayToHexString(sha1hash).substring(0, 16));
     } 
-    
+	
+	public static String byteArrayToHexString(byte[] b) {
+		  String result = "";
+		  for (int i=0; i < b.length; i++) {
+		    result +=
+		          Integer.toString( ( b[i] & 0xff ) + 0x100, 16).substring( 1 );
+		  }
+		  return result;
+		}
+	
+	public static String hexToBinary(String hex)
+	{
+		StringBuffer binary = new StringBuffer();
+		
+		for(char c: hex.toCharArray())
+		{
+			switch(c)
+			{
+				case '0': binary.append("0000");break;
+				case '1': binary.append("0001");break;
+				case '2': binary.append("0010");break;
+				case '3': binary.append("0011");break;
+				case '4': binary.append("0100");break;
+				case '5': binary.append("0101");break;
+				case '6': binary.append("0110");break;
+				case '7': binary.append("0111");break;
+				case '8': binary.append("1000");break;
+				case '9': binary.append("1001");break;
+				case 'a': binary.append("1010");break;
+				case 'b': binary.append("1011");break;
+				case 'c': binary.append("1100");break;
+				case 'd': binary.append("1101");break;
+				case 'e': binary.append("1110");break;
+				case 'f': binary.append("1111");break;
+			}
+		}
+		return binary.toString();
+	}
+	
 	public void reduce(Text docid,Iterable<Text> value,Context context) throws IOException, InterruptedException
 	{
 		ArrayList<String> temp = new ArrayList<String>();

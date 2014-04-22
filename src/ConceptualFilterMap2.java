@@ -43,8 +43,8 @@ public class ConceptualFilterMap2 extends Mapper<LongWritable, Text, IntWritable
     			fingerprintsecondhalf += ","+fingerprintlist.get(j);
     	}
     	
-    	System.out.println("Outputing : " + docname + " $$$ " + fingerprintfirsthalf);
-    	System.out.println("Outputing : " + docname + " $$$ " + fingerprintsecondhalf);
+    	//System.out.println("Outputing : " + docname + " $$$ " + fingerprintfirsthalf);
+    	//System.out.println("Outputing : " + docname + " $$$ " + fingerprintsecondhalf);
     	
     	context.write(new IntWritable(1), new Text(docname + " $$$ " + fingerprintfirsthalf));
     	context.write(new IntWritable(2), new Text(docname + " $$$ " + fingerprintsecondhalf));

@@ -19,7 +19,7 @@ public class ConceptualFilterMap3 extends Mapper<LongWritable, Text, Text, Text>
     	
     	String restofrecord = linestring.substring(starthash+3).trim();
     	
-    	System.out.println("Rest of record: "+docname1 + " " + docname2 + " " + restofrecord);
+    	//System.out.println("Rest of record: "+docname1 + " " + docname2 + " " + restofrecord);
     	
     	context.write(new Text(docname1 + "$$$" + docname2), new Text(restofrecord));
     }

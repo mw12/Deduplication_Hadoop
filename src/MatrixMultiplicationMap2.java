@@ -17,7 +17,7 @@ public class MatrixMultiplicationMap2 extends Mapper<LongWritable, Text, Text, F
 		int col = Integer.parseInt(record.substring(startdollar+3, starthash).trim());
 		float product = Float.parseFloat(record.substring(starthash+3).trim());
 		
-		System.out.println("Now writing row: "+row+" $$$ "+col+" "+product);
+		//System.out.println("Now writing row: "+row+" $$$ "+col+" "+product);
 		context.write(new Text(row+" $$$ "+col), new FloatWritable(product));
 	}
 }
